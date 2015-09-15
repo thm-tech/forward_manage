@@ -1,0 +1,30 @@
+@import "color.less";
+
+.transition(@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+.opacity(@opacity) {
+    @opacity-10: @opacity * 10;
+    opacity: @opacity;
+    filter: ~"alpha(opacity=@{opacity-10})";
+}
+
+.transform(@args) {
+    -moz-transform: @args;
+    -ms-transform: @args;
+    -o-transform: @args;
+    -webkit-transform: @args;
+    transform: @args;
+}
+
+body {
+    color: #333333;
+    background-color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+}
