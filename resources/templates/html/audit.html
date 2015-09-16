@@ -2,7 +2,8 @@
     总共 {{ auditWaits.totalNum }} 只店铺等待审核.
     <ul>
         <li ng-repeat="a in auditWaits.shops">
-            <span>{{ a }}</span>
+            <p>商店信息: id {{ a.shop_id }} 名字: {{ a.shop_name }} 城市: {{ a.city_name }} 地址: {{ a.address }} 品牌名称: {{ a.brand_name }}</p>
+            <p>联系方式: 姓名 {{ a.contact_name }} 电话 {{ a.contact_phone_no }}, 邮箱 {{ a.contact_email }}, 扣扣: {{ a.contact_qq }}</p>
             <a href="javascript: void(0)" ng-click="auditPass(a.shop_id)">通过</a>
         </li>
     </ul>

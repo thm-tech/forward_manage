@@ -16,7 +16,31 @@ logger = src.pydev.logger.create('dao')
 def list_wait_audit_shops():
     conn = src.pydev.mysql.connection()
     cursor = conn.cursor()
-    sql = 'select * from fd_t_shopaccount where service_status = 1'
+    sql = """
+        SELECT DISTINCT
+        fd_t_shopaccount.shop_id,
+        fd_t_shopaccount.contact_name,
+        fd_t_shopaccount.contact_phone_no,
+        fd_t_shopaccount.contact_email,
+        fd_t_shopaccount.contact_qq,
+        fd_t_shop.brand_name,
+        fd_t_shop.shop_name,
+        fd_t_shop.business_hours,
+        fd_t_shop.telephone_no,
+        fd_t_shop.city_id,
+        fd_t_shop.district_id,
+        fd_t_shop.business_area,
+        fd_t_shop.address,
+        fd_t_shop.category_list,
+        fd_t_citycode.city_name,
+        fd_t_category.name
+        FROM
+        fd_t_shopaccount
+        LEFT JOIN fd_t_shop ON fd_t_shopaccount.shop_id = fd_t_shop.shop_id
+        LEFT JOIN fd_t_citycode ON fd_t_shop.city_id = fd_t_citycode.city_id
+        LEFT JOIN fd_t_category ON fd_t_shop.category_list = fd_t_category.id
+        WHERE
+        fd_t_shopaccount.service_status = 1"""
     row_counts = cursor.execute(sql)
     if row_counts:
         rows = list(cursor.fetchall())
@@ -27,14 +51,26 @@ def list_wait_audit_shops():
         for row in rows:
             info = {
                 'shop_id': row['shop_id'],
+                'shop_name': row['shop_name'],
+
+                'brand_name': row['brand_name'],
+                'business_hours': row['business_hours'],
+                'telephone_no': row['telephone_no'],
+                'city_id': row['city_id'],
+                'city_name': row['city_name'],
+                'district_id': row['district_id'],
+                'business_area': row['business_area'],
+                'address': row['address'],
+                'category_list': row['category_list'],
+
                 'contact_name': row['contact_name'],
                 'contact_phone_no': row['contact_phone_no'],
                 'contact_email': row['contact_email'],
                 'contact_qq': row['contact_qq'],
-                'service_balance': float(row['service_balance']),
-                'service_deadline': src.utils.trans.datetime_to_string(row['service_deadline']),
-                'service_status': row['service_status'],
-                'portrait_url': src.utils.piclist_to_fulllist(row['portrait_url']),
+                # 'service_balance': float(row['service_balance']),
+                # 'service_deadline': src.utils.trans.datetime_to_string(row['service_deadline']),
+                # 'service_status': row['service_status'],
+                # 'portrait_url': src.utils.piclist_to_fulllist(row['portrait_url']),
             }
             return_rows.append(info)
         return return_rows
@@ -92,3 +128,6 @@ def audit_shop_all():
     for i in sl:
         audit_shop_pass(i['shop_id'])
     return len(sl)
+
+if __name__ == '__main__':
+    print(list_wait_audit_shops())
