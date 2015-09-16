@@ -2,6 +2,13 @@
 
 app.controller("index", ['$scope', '$http', '$location', 'global', function ($scope, $http, $location, global) {
 
+        $scope.navbar = {};
+        $scope.navbar.index = 1;
+
+        var clickNav = $scope.clickNav = function(index){
+            $scope.navbar.index = index;
+        };
+
         // circle progress
         //var windowHeight = $(window).height();
         //$(window).bind("scroll", function () {

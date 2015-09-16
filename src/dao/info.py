@@ -25,5 +25,3 @@ def get_shopaccount_info(shop_id):
         r['portrait_url'] = None
 
     return r
-
-print(get_shopaccount_info(10221))

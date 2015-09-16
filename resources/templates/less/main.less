@@ -28,6 +28,10 @@ body {
     position: relative;
 }
 
+a {
+    outline: none !important;
+}
+
 .navbar-magnolia {
     position: fixed;
     top: 0;
@@ -40,11 +44,26 @@ body {
         li {
             display: inline-block;
             padding: 24px 10px;
+            .transition(all 0.5s);
             a {
                 color: #757575;
                 text-transform: uppercase;
+                .transition(all 0.5s);
+            }
+            &:hover {
+                a {
+                    font-size: 1.3em;
+                    color: #ffffff;
+                }
+                background-color: @color-main;
             }
         }
     }
-
+    li.active {
+        a {
+            font-size: 1.3em;
+            color: #ffffff;
+        }
+        background-color: @color-main;
+    }
 }

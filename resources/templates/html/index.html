@@ -18,8 +18,8 @@
 <!-- navbar -->
 <nav class="navbar-magnolia">
     <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/audit.html">Audit</a></li>
+        <li ng-class="{active: navbar.index == 1}"><a href="/index.html" ng-click="clickNav(1)">Home</a></li>
+        <li ng-class="{active: navbar.index == 2}"><a href="/audit.html" ng-click="clickNav(2)">Audit</a></li>
     </ul>
 </nav>
 <!-- navbar end -->
