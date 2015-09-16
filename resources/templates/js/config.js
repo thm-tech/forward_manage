@@ -33,6 +33,9 @@ app.config(function ($httpProvider, $routeProvider, $locationProvider, $interpol
         .when('/audit.html', {
             templateUrl: '/static/html/audit.html'
         })
+        .when('/feedback.html', {
+            templateUrl: '/static/html/feedback.html'
+        })
         .otherwise({
             redirectTo: '/index.html'
         });
