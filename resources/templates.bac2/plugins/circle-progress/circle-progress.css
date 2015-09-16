@@ -1,0 +1,48 @@
+.circle-progress {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 50%;
+    background: #0cc;
+}
+
+.circle-progress .pie_left, .circle-progress .pie_right {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.circle-progress .left, .circle-progress .right {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background: #00aacc;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(30deg);
+}
+
+.circle-progress .pie_right, .circle-progress .right {
+    clip: rect(0, auto, auto, 100px);
+}
+
+.circle-progress .pie_left, .circle-progress .left {
+    clip: rect(0, 100px, auto, 0);
+}
+
+.circle-progress .mask {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    left: 25px;
+    top: 25px;
+    background: #FFF;
+    position: absolute;
+    text-align: center;
+    line-height: 150px;
+    font-size: 16px;
+}

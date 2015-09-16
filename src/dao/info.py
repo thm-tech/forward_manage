@@ -18,5 +18,12 @@ def get_shopaccount_info(shop_id):
     sql = 'select * from fd_t_shopaccount where shop_id = %s'
     params = [shop_id]
     r = src.pydev.mysql.fetchone(sql, params)
-    r['portrait_url'] = src.utils.piclist_to_fulllist(r['portrait_url'])[0]
+    r['portrait_url'] = src.utils.piclist_to_fulllist(r['portrait_url'])
+    if r['portrait_url']:
+        r['portrait_url'] = r['portrait_url'][0]
+    else:
+        r['portrait_url'] = None
+
     return r
+
+print(get_shopaccount_info(10221))

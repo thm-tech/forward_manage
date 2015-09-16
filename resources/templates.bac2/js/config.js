@@ -9,8 +9,8 @@ app.constant('global', {
 
 app.config(function ($httpProvider, $routeProvider, $locationProvider, $interpolateProvider) {
 
-    //$interpolateProvider.startSymbol('{*');
-    //$interpolateProvider.endSymbol('*}');
+    $interpolateProvider.startSymbol('{*');
+    $interpolateProvider.endSymbol('*}');
 
     $httpProvider.defaults.transformRequest = function (obj) {
         var str = [];
@@ -28,10 +28,12 @@ app.config(function ($httpProvider, $routeProvider, $locationProvider, $interpol
 
     $routeProvider
         .when('/index.html', {
-            templateUrl: '/static/html/welcome.html'
+            templateUrl: '/static/app/home/home.html',
+            controller:'home'
         })
         .when('/audit.html', {
-            templateUrl: '/static/html/audit.html'
+            templateUrl: '/static/app/audit/audit.html',
+            controller:'audit'
         })
         .otherwise({
             redirectTo: '/index.html'

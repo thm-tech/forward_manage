@@ -1,0 +1,95 @@
+<!doctype html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en-US" ng-app="app">
+<head>
+    <base href="/">
+    <title>Magnolia</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="robots" content="all,index,follow"/>
+
+    <!-- link css-->
+    <link rel="stylesheet" type="text/css" href="/static/plugins/bootstrap/css/bootstrap-superhero.css">
+    <link rel="stylesheet" type="text/css" href="/static/plugins/center.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/plugins/circle-progress/circle-progress.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/plugins/imhover.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/app/welcome/welcome.css"/>
+    <!-- link less -->
+    <link rel="stylesheet/less" type="text/css" href="/static/css/magnolia.less"/>
+    <link rel="stylesheet/less" type="text/css" href="/static/plugins/ghost.less"/>
+    <script src="//cdn.bootcss.com/less.js/2.5.1/less.min.js"></script>
+</head>
+
+<body ng-controller="index" data-spy="scroll" data-target="#idNavBar">
+
+<section id="screen1" scroll-hide="1">
+    <div ng-include="'/static/app/welcome/welcome.html'"></div>
+</section>
+<div style="position: relative;">
+    <!-- navbar in computer  -->
+    <nav id="idNavBar" class="mag-nav hidden-xs" mag-nav>
+        <ul class="nav" role="tablist">
+            <li id="idbord1" role="presentation">
+                <div class="board"></div>
+                <a href="#screen1">Home</a>
+            </li>
+            <li id="idbord2" role="presentation">
+                <div class="board"></div>
+                <a href="#screen2">Audit</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- navbar in phone  -->
+    <nav class="mag-nav mag-nav-xs visible-xs" mag-nav>
+        <a href="#screen1">
+            <h3>Magnolia</h3>
+        </a>
+
+        <div class="mag-dropdown">
+            <a id="drop3" href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button"
+               aria-haspopup="true"
+               aria-expanded="true">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="drop3">
+                <li><a href="#screen1">Home</a></li>
+                <li><a href="#screen2">Sudit</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section id="screen2" scroll-hide="2">
+        <div ng-include="'/static/app/home/home.html'"></div>
+    </section>
+</div>
+<section id="screen3" scroll-hide="3">
+    <div ng-include="'/static/app/shortcodes/shortcodes.html'"></div>
+</section>
+<section id="screen4" scroll-hide="4">
+    <div ng-include="'/static/app/blog/blog.html'"></div>
+    <div class="row center-block circle-progress-container">
+        <p>
+            <circle-progress>{* percent *}</circle-progress>
+        </p>
+    </div>
+</section>
+<section id="screen5" scroll-hide="5">
+    <div ng-include="'/static/app/contact/contact.html'"></div>
+</section>
+
+
+<!-- link very important js -->
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/angular.js/1.4.3/angular.min.js"></script>
+<script src="/static/plugins/angular-route.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- link important js -->
+<script type="text/javascript" src="/static/js/config.js"></script>
+<!-- link js -->
+<script type="text/javascript" src="/static/js/directives.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/app/home/home.js"></script>
+<script type="text/javascript" src="/static/app/welcome/welcome.js"></script>
+</body>
+</html>

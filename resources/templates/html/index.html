@@ -14,14 +14,27 @@
     <link rel="stylesheet/less" type="text/css" href="/static/less/main.less"/>
     <script src="/static/plugins/less.min.js"></script>
 </head>
-<body>
-<div ng-view></div>
+<body ng-controller="index">
+<!-- navbar -->
+<nav class="navbar-magnolia">
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/audit.html">Audit</a></li>
+    </ul>
+</nav>
+<!-- navbar end -->
+<div style="position: relative; top: 70px;">
+    <div ng-view></div>
+</div>
 
 <script src="/static/plugins/jquery.min.js"></script>
 <script src="/static/plugins/angular.min.js"></script>
 <script src="/static/plugins/angular-route.min.js"></script>
 <script src="/static/plugins/bootstrap.min.js"></script>
-
+<!--PROJECT-->
 <script src="/static/js/config.js"></script>
+<!--CONTROLLER-->
+<script src="/static/js/index.controller.js"></script>
+<script src="/static/js/audit.controller.js"></script>
 </body>
 </html>

@@ -1,1 +1,9 @@
-audit
+<div ng-controller="audit">
+    总共 {{ auditWaits.totalNum }} 只店铺等待审核.
+    <ul>
+        <li ng-repeat="a in auditWaits.shops">
+            <span>{{ a }}</span>
+            <a href="javascript: void(0)" ng-click="auditPass(a.shop_id)">通过</a>
+        </li>
+    </ul>
+</div>

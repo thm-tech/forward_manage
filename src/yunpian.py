@@ -47,10 +47,10 @@ def send_phone_captcha(mobile):
 
 
 def send_audit_shop_success(mobile, shopname):
-    r = send_message(mobile=mobile, tpl_id=865727, shopname=shopname.encode('utf-8'))
+    r = send_message(mobile=mobile, tpl_id=865727, shopname=shopname)
     return r
 
 
 if __name__ == '__main__':
-    r = send_audit_shop_success('18756967287', u'小苹果2')
+    r = send_audit_shop_success('18756967287', '小苹果2')
     print(r)

@@ -1,0 +1,40 @@
+/*
+<div class="vertically-center">
+        <div class="sub-vertically-center">
+            <div class="wap-vertically-center">
+                <div style="width: 100px" class="center-block">
+                    hello
+                </div>
+            </div>
+        </div>
+    </div>
+*/
+
+div.vertically-center {
+    display: table;
+    width: 100%;
+    height: 100%;
+    _position: relative;
+    overflow: hidden;
+}
+
+div.vertically-center .sub-vertically-center {
+    vertical-align: middle;
+    display: table-cell;
+    _position: absolute;
+    _top: 50%;
+}
+
+div.vertically-center .sub-vertically-center .wap-vertically-center {
+    _position: relative;
+    _top: -50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
