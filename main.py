@@ -14,7 +14,7 @@ from tornado.web import StaticFileHandler
 
 from src.utils.tornado_extra import urls, register
 
-define('port', default=8888, help='run on the given port', type=int)
+define('port', default=8686, help='run on the given port', type=int)
 
 settings = {
     'xsrf_cookies': False,
