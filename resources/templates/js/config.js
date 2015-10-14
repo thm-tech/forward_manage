@@ -36,6 +36,9 @@ app.config(function ($httpProvider, $routeProvider, $locationProvider, $interpol
         .when('/feedback.html', {
             templateUrl: '/static/html/feedback.html'
         })
+        .when('/documents.html', {
+            templateUrl: '/static/html/documents.html'
+        })
         .otherwise({
             redirectTo: '/index.html'
         });
