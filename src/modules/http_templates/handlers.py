@@ -5,6 +5,13 @@ from src.utils.tornado_extra import route
 import src.pydev
 
 
+@route(r'/')
+class IndexHandler(HttpBaseHandler):
+    def get(self, *args, **kwargs):
+        with open(src.pydev.pathjoin('resources', 'templates', 'html', 'index.html'), 'r') as f:
+            html = f.read()
+        self.write(html)
+
 @route(r'/index.html')
 class IndexHandler(HttpBaseHandler):
     def get(self, *args, **kwargs):
