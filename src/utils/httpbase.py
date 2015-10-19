@@ -22,3 +22,7 @@ class HttpBaseHandler(tornado.web.RequestHandler):
 
     def options(self, *args, **kwargs):
         pass
+
+    def get_current_user(self):
+        id = self.get_secure_cookie("id")
+        return id

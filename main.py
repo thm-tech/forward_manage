@@ -18,7 +18,7 @@ define('port', default=8686, help='run on the given port', type=int)
 
 settings = {
     'xsrf_cookies': False,
-    'login_url': '/',
+    'login_url': '/login.html',
     'debug': True,
     'cookie_secret': 'mohanson',
     'gzip': True,
