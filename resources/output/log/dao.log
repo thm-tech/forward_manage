@@ -20,3 +20,5 @@
 [2015-09-16 14:11:39,630 INFO audit.py:69] audit shop: shop_id: 10210, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:0
 [2015-09-16 14:11:40,957 INFO audit.py:69] audit shop: shop_id: 10221, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:0
 [2015-09-16 17:47:34,065 INFO audit.py:105] audit shop: shop_id: 10210, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:0
+[2015-10-20 10:16:00,888 INFO audit.py:105] audit shop: shop_id: 10035, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:1
+[2015-10-20 10:16:00,888 INFO audit.py:105] audit shop: shop_id: 10035, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:1

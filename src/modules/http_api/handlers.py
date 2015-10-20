@@ -84,6 +84,7 @@ class LoginHandler(HttpBaseHandler):
     @argument('_user', '_pwd', 'remember')
     def post(self):
         if self.arg.user == 'admin' and self.arg.pwd == 'impower2015':
+
             if self.arg.remember == '1':
                 self.set_secure_cookie(name='id', value='10000', expires_days=7)
             else:
