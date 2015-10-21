@@ -1,7 +1,12 @@
 <div class="container-fluid" ng-controller="audit">
-    <h3>总共 {{ auditWaits.totalNum }} 只店铺等待审核.</h3>
+
+    <ul class="nav nav-tabs">
+        <li role="presentation" ng-class="{'active': navIndex == 1}"><a href="javascript: void(0)" ng-click="changeNav(1);getAuditWaits()">等待审核({{ auditLists.totalNum }})</a></li>
+        <li role="presentation" ng-class="{'active': navIndex == 2}"><a href="javascript: void(0)" ng-click="changeNav(2);getNotPassAudit()">拒绝的申请</a></li>
+    </ul>
+
     <ol>
-        <li ng-repeat="a in auditWaits.shops" style="margin-top: 30px">
+        <li ng-repeat="a in auditLists.shops" style="margin-top: 30px">
             <div>
                 <div class="row">
                     <div class="col-md-1"><span>ID: </span><span>{{ a.shop_id }}</span></div>

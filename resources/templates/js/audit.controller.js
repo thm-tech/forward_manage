@@ -5,15 +5,28 @@
 
 app.controller("audit", ['$scope', '$http', '$location', 'global', function ($scope, $http, $location, global) {
 
-        var init = $scope.init = function () {
+        $scope.auditLists = {};
+
+        var getAuditWaits = $scope.getAuditWaits = function(){
             $http({
                 url: '/audit/waits',
                 method: 'GET'
             }).success(function (data) {
-                $scope.auditWaits = {};
-                $scope.auditWaits.totalNum = data.total_num;
-                $scope.auditWaits.shops = data.shops;
+                $scope.auditLists.totalNum = data.total_num;
+                $scope.auditLists.shops = data.shops;
             })
+        };
+
+        var getNotPassAudit = $scope.getNotPassAudit = function(){
+            $http.get('/audit/notpassed').success(function(data){
+                //$scope.auditLists = {};
+                //$scope.auditLists.totalNum = data.total_num;
+                $scope.auditLists.shops = data.shops;
+            })
+        };
+
+        var init = $scope.init = function () {
+            getAuditWaits();
         };
         init();
 
@@ -42,6 +55,12 @@ app.controller("audit", ['$scope', '$http', '$location', 'global', function ($sc
                 }
             })
         };
+
+        $scope.navIndex = 1;
+        var changeNav = $scope.changeNav = function(index){
+            $scope.navIndex = index;
+        };
+
 
 
     }]
