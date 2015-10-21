@@ -1,10 +1,28 @@
 <div class="container-fluid" ng-controller="audit">
     <h3>总共 {{ auditWaits.totalNum }} 只店铺等待审核.</h3>
     <ol>
-        <li ng-repeat="a in auditWaits.shops">
-            <p>商店信息: id {{ a.shop_id }} 名字: {{ a.shop_name }} 城市: {{ a.city_name }} 地址: {{ a.address }} 品牌名称: {{ a.brand_name }}</p>
-            <p>联系方式: 姓名 {{ a.contact_name }} 电话 {{ a.contact_phone_no }}, 邮箱 {{ a.contact_email }}, QQ: {{ a.contact_qq }}</p>
-            <a href="javascript: void(0)" ng-click="auditPass(a.shop_id)">通过</a>
+        <li ng-repeat="a in auditWaits.shops" style="margin-top: 30px">
+            <div>
+                <div class="row">
+                    <div class="col-md-1"><span>ID: </span><span>{{ a.shop_id }}</span></div>
+                    <div class="col-md-2"><span>名字: </span><span>{{ a.shop_name }}</span></div>
+                    <div class="col-md-2"><span>城市: </span><span>{{ a.city_name }}</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><span>地址: </span><span>{{ a.address }}</span></div>
+                    <div class="col-md-2"><span>品牌名称: </span><span>{{ a.brand_name }}</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2" ng-if="a.contact_name"><span>姓名: </span><span>{{ a.contact_name }}</span></div>
+                    <div class="col-md-2" ng-if="a.contact_phone_no"><span>电话: </span><span>{{ a.contact_phone_no }}</span></div>
+                    <div class="col-md-2" ng-if="a.contact_email"><span>邮箱: </span><span>{{ a.contact_email }}</span></div>
+                    <div class="col-md-2" ng-if="a.contact_qq"><span>QQ: </span><span>{{ a.contact_qq }}</span></div>
+                </div>
+                <div class="row">
+                    <a class="col-md-1" href="javascript: void(0)" ng-click="auditPass(a.shop_id)">通过 </a>
+                    <a class="col-md-1" href="javascript: void(0)" ng-click="notAuditPass(a.shop_id)"> 不通过</a>
+                </div>
+            </div>
         </li>
     </ol>
 </div>

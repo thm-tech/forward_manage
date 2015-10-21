@@ -30,6 +30,19 @@ app.controller("audit", ['$scope', '$http', '$location', 'global', function ($sc
             })
         };
 
+        var notAuditPass = $scope.notAuditPass = function (shop_id) {
+            $http({
+                url: '/audit/' + String(shop_id) + '/notpass',
+                method: 'PUT'
+            }).success(function (data) {
+                if (data.is_success == true) {
+                    init();
+                } else {
+                    alert('something wrong!')
+                }
+            })
+        };
+
 
     }]
 );

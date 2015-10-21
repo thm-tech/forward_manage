@@ -22,3 +22,39 @@
 [2015-09-16 17:47:34,065 INFO audit.py:105] audit shop: shop_id: 10210, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:0
 [2015-10-20 10:16:00,888 INFO audit.py:105] audit shop: shop_id: 10035, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:1
 [2015-10-20 10:16:00,888 INFO audit.py:105] audit shop: shop_id: 10035, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:1
+[2015-10-21 10:07:26,243 INFO audit.py:119] audit shop not pass: shop_id: /10041, fd_t_shopaccount row count:0
+[2015-10-21 10:07:26,243 INFO audit.py:119] audit shop not pass: shop_id: /10041, fd_t_shopaccount row count:0
+[2015-10-21 10:09:01,558 INFO audit.py:120] audit shop not pass: shop_id: /10041, fd_t_shopaccount row count:0
+[2015-10-21 10:09:01,558 INFO audit.py:120] audit shop not pass: shop_id: /10041, fd_t_shopaccount row count:0
+[2015-10-21 10:12:25,846 INFO audit.py:120] audit shop not pass: shop_id: /10041, fd_t_shopaccount row count:0
+[2015-10-21 10:12:25,846 INFO audit.py:120] audit shop not pass: shop_id: /10041, fd_t_shopaccount row count:0
+[2015-10-21 10:13:09,286 INFO audit.py:105] audit shop: shop_id: 10041, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:1
+[2015-10-21 10:13:09,286 INFO audit.py:105] audit shop: shop_id: 10041, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:1
+[2015-10-21 10:13:19,602 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:13:19,602 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:14:11,542 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:14:11,542 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:14:12,125 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:14:12,125 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:14:12,296 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:14:12,296 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:14:15,687 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:14:15,687 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:19:23,765 INFO audit.py:119] audit shop not pass: shop_id: /10039, fd_t_shopaccount row count:0
+[2015-10-21 10:19:23,765 INFO audit.py:119] audit shop not pass: shop_id: /10039, fd_t_shopaccount row count:0
+[2015-10-21 10:19:38,793 INFO audit.py:119] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:19:38,793 INFO audit.py:119] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:21:34,700 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:21:34,700 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:22:22,451 INFO audit.py:119] update fd_t_shopaccount set service_status = 1 where shop_id = 2
+[2015-10-21 10:22:22,451 INFO audit.py:119] update fd_t_shopaccount set service_status = 1 where shop_id = 2
+[2015-10-21 10:22:22,453 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:22:22,453 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:22:49,973 INFO audit.py:119] update fd_t_shopaccount set service_status = 4 where shop_id = /10040
+[2015-10-21 10:22:49,973 INFO audit.py:119] update fd_t_shopaccount set service_status = 4 where shop_id = /10040
+[2015-10-21 10:22:49,974 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:22:49,974 INFO audit.py:120] audit shop not pass: shop_id: /10040, fd_t_shopaccount row count:0
+[2015-10-21 10:23:58,756 INFO audit.py:119] audit shop not pass: shop_id: 10040, fd_t_shopaccount row count:1
+[2015-10-21 10:23:58,756 INFO audit.py:119] audit shop not pass: shop_id: 10040, fd_t_shopaccount row count:1
+[2015-10-21 11:58:33,286 INFO audit.py:162] audit shop: shop_id: 10016, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:1
+[2015-10-21 11:58:33,286 INFO audit.py:162] audit shop: shop_id: 10016, fd_t_shopaccount row count:1, fd_t_fansmessageconfig row count:1

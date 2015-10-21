@@ -17,6 +17,7 @@
 <body ng-controller="index">
 <!-- navbar -->
 <nav class="navbar-magnolia row" style="z-index: 3">
+    <img src="/static/img/logo.png" style="position: absolute;left:30px;top:20px"/>
     <ul>
         <li ng-class="{active: navbar.index == 1}"><a href="/index.html" ng-click="clickNav(1)">Home</a></li>
         <li ng-class="{active: navbar.index == 2}"><a href="/audit.html" ng-click="clickNav(2)">Audit</a></li>
@@ -36,6 +37,7 @@
 <script src="/static/plugins/jquery.min.js"></script>
 <script src="/static/plugins/angular.min.js"></script>
 <script src="/static/plugins/angular-route.min.js"></script>
+<script src="//cdn.bootcss.com/angular-cookie/4.0.0/angular-cookie.min.js"></script>
 <script src="/static/plugins/bootstrap.min.js"></script>
 <!--PROJECT-->
 <script src="/static/js/config.js"></script>

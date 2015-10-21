@@ -22,6 +22,17 @@ class AuditWaitsHandler(HttpBaseHandler):
         })
 
 
+@route(r'/audit/notpassed')
+class AuditNotPassesHandler(HttpBaseHandler):
+    @authenticated
+    def get(self, *args, **kwargs):
+        shops = src.daoaccess.audit.list_audit_notpass_shops()
+        self.write({
+            'shops': shops,
+            'total_num': len(shops)
+        })
+
+
 @route(r'/audit/(.*)/pass')
 class AuditPassHandler(HttpBaseHandler):
     @authenticated
@@ -32,7 +43,7 @@ class AuditPassHandler(HttpBaseHandler):
         })
 
 
-@route(r'/audit(.*)/notpass')
+@route(r'/audit/(.*)/notpass')
 class AuditNotPassHandler(HttpBaseHandler):
     @authenticated
     def put(self, shop_id, *args, **kwargs):
@@ -49,7 +60,8 @@ class DocumentsHandler(HttpBaseHandler):
         return_list = []
         documents_dir = pathjoin('resources', 'documents')
         for i in os.listdir(documents_dir):
-            return_list.append(os.path.basename(i))
+            if not i.endswith('.md'):
+                return_list.append(os.path.basename(i))
         self.write({
             'documents': return_list
         })

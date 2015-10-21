@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module("app", ["ngRoute"]);
+var app = angular.module("app", ["ngRoute", "ivpusic.cookie"]);
 
 app.constant('global', {
         host: "http://localhost:8888"
@@ -8,9 +8,6 @@ app.constant('global', {
 );
 
 app.config(function ($httpProvider, $routeProvider, $locationProvider, $interpolateProvider) {
-
-    //$interpolateProvider.startSymbol('{*');
-    //$interpolateProvider.endSymbol('*}');
 
     $httpProvider.defaults.transformRequest = function (obj) {
         var str = [];
@@ -46,3 +43,15 @@ app.config(function ($httpProvider, $routeProvider, $locationProvider, $interpol
             redirectTo: '/index.html'
         });
 });
+
+app.run(['$rootScope', '$location', 'ipCookie', function ($rootScope, $location, ipCookie) {
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        if (!ipCookie('id')) {
+            // There are two ways to implementation route/cookies controll
+            // First way is use event.proventDefault(), like thus
+            // event.preventDefault();
+            // Here is the second way
+            $location.path('/login.html')
+        }
+    })
+}]);
