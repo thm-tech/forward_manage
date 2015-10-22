@@ -18,9 +18,15 @@ def insert_shop(shop_id, category_list, city_id, longitude, latitude):
     response = places.insert({'shop_id': int(shop_id),
                               'category_list': category_list,
                               'city_id': int(city_id),
-                              'local': [float(longitude), float(latitude)]
+                              'local': [float(longitude), float(latitude)],
+                              'weights': 0.01,
                               })
     log_mongo.info('mongodb insert' + str(response))
     return response
 
-insert_shop(10128, [206], 1048577, 117.286418, 31.837844)
+
+if __name__ == '__main__':
+    import random
+
+    for i in places.find({}):
+        places.update_one({'shop_id': i['shop_id']}, {'$set': {'weight': random.random() * 100}})
