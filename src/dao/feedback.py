@@ -74,8 +74,13 @@ def insert_platform_return_feedback(cursor, user_id, content):
 
 
 def main(cursor):
-    r = get_platform_and_user_feedbacks(cursor, 10007)
-    print(r)
+    count = cursor.execute('select goods_id, basic_info from fd_t_goods where basic_info is not null')
+    for i in cursor.fetchall():
+        binfo = eval(i['basic_info'])
+        if binfo:
+            a = filter(lambda _: _['paramsName'] == "\xe5\xa4\x87\xe6\xb3\xa8", binfo)[0]['paramsValue']
+            cursor.execute('update fd_t_goods set detail = %s', (a,))
+            print(a)
 
 
 if __name__ == '__main__':
