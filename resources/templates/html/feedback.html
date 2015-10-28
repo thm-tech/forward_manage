@@ -6,7 +6,8 @@
                 <thead>
                 <tr style="background-color: #ffffff">
                     <th style="width: 10%">user_id</th>
-                    <th style="width: 60%">content</th>
+                    <th style="width: 10%">name</th>
+                    <th style="width: 50%">content</th>
                     <th style="width: 15%">time</th>
                     <th style="width: 15%">operation</th>
                 </tr>
@@ -14,6 +15,7 @@
                 <tbody>
                 <tr ng-repeat="f in feedbacks">
                     <td>{{ f.user_id }}</td>
+                    <td>{{ f.name }}</td>
                     <td>{{ f.content }}</td>
                     <td>{{ f.time }}</td>
                     <td class="row">

@@ -11,7 +11,7 @@ logger = src.pydev.logger.create('dao')
 
 
 def get_user_feedbacks(cursor, offset, limit):
-    sql = 'select * from fd_t_feedback where direction = 1 ORDER BY time desc LIMIT %s OFFSET %s'
+    sql = 'select * from fd_t_feedback LEFT JOIN fd_t_user ON fd_t_feedback.user_id = fd_t_user.user_id where direction = 1 ORDER BY time desc LIMIT %s OFFSET %s'
     params = (limit, offset)
     row_counts = cursor.execute(sql, params)
 
@@ -22,6 +22,7 @@ def get_user_feedbacks(cursor, offset, limit):
             feedback_info = {
                 'content': row['content'],
                 'user_id': row['user_id'],
+                'name': row['name'],
                 'time': row['time'].strftime('%Y-%m-%d %H:%M:%S')
             }
             return_list.append(feedback_info)
@@ -74,13 +75,8 @@ def insert_platform_return_feedback(cursor, user_id, content):
 
 
 def main(cursor):
-    count = cursor.execute('select goods_id, basic_info from fd_t_goods where basic_info is not null')
-    for i in cursor.fetchall():
-        binfo = eval(i['basic_info'])
-        if binfo:
-            a = filter(lambda _: _['paramsName'] == "\xe5\xa4\x87\xe6\xb3\xa8", binfo)[0]['paramsValue']
-            cursor.execute('update fd_t_goods set detail = %s', (a,))
-            print(a)
+    r = get_user_feedbacks(cursor, 0, 10)
+    print(r)
 
 
 if __name__ == '__main__':
