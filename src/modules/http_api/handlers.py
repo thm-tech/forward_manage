@@ -6,9 +6,9 @@ from tornado.web import authenticated
 
 from src.utils.httpbase import HttpBaseHandler
 from src.utils.tornado_extra import route, argument
+from src.settings import DIR
 import src.daoaccess.audit
 import src.daoaccess.feedback
-from src.pydev import pathjoin
 
 
 @route(r'/audit/waits')
@@ -58,10 +58,11 @@ class DocumentsHandler(HttpBaseHandler):
     @authenticated
     def get(self):
         return_list = []
-        documents_dir = pathjoin('resources', 'documents')
+        documents_dir = DIR.joinpath('resources', 'documents').__str__()
         for i in os.listdir(documents_dir):
             if not i.endswith('.md'):
                 return_list.append(os.path.basename(i))
+
         self.write({
             'documents': return_list
         })

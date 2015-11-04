@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
-
-__author__ = 'Mohanson'
-
 import logging
 import logging.handlers
 import sys
 
-from . import pathjoin
+from ._path import DIR
 
-LOG_BASEDIR = pathjoin('resources', 'output', 'log')
+
+LOG_BASEDIR = DIR.joinpath('resources', 'output', 'log').__str__()
 
 LOGGER_LEVEL = logging.DEBUG
 
@@ -40,3 +38,7 @@ def create(name='standard'):
     log.addHandler(file_handler)
     log.addHandler(stream_handler)
     return log
+
+
+LOGGER_ROOT = create('root')
+LOGGER_MONGO = create('mongo')

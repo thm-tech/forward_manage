@@ -2,19 +2,16 @@
 
 import datetime
 
-import src.pydev.mysql
+import src.settings._mysql
 import src.define
-import src.pydev.config
-import src.pydev.logger
+from src.settings import SETTINGS
+from src.settings import LOGGER_ROOT
 import src.utils
 import src.utils.trans
 
-conf = src.pydev.config.read_ini('core.ini')
-logger = src.pydev.logger.create('dao')
-
 
 def list_wait_audit_shops():
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
     sql = """
         SELECT DISTINCT
@@ -138,7 +135,7 @@ def list_audit_notpass_shops(cursor):
 
 
 def audit_shop_pass(shop_id):
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
     # set fd_t_shopaccount
     sql = 'update fd_t_shopaccount set service_deadline = %s, service_status = %s where shop_id = %s'
@@ -149,16 +146,16 @@ def audit_shop_pass(shop_id):
     sql2 = 'update fd_t_fansmessageconfig set ' \
            'current_p2p_count = %s, p2p_remain_count = %s, next_p2p_count = %s, ' \
            'current_mass_count = %s, mass_remain_count = %s, next_mass_count = %s where shop_id = %s'
-    params2 = [conf.get('fansmessageconfig', 'current_p2p_count'),
-               conf.get('fansmessageconfig', 'p2p_remain_count'),
-               conf.get('fansmessageconfig', 'next_p2p_count'),
-               conf.get('fansmessageconfig', 'current_mass_count'),
-               conf.get('fansmessageconfig', 'mass_remain_count'),
-               conf.get('fansmessageconfig', 'next_mass_count'),
+    params2 = [SETTINGS['fansmessageconfig']['current_p2p_count'],
+               SETTINGS['fansmessageconfig']['p2p_remain_count'],
+               SETTINGS['fansmessageconfig']['next_p2p_count'],
+               SETTINGS['fansmessageconfig']['current_mass_count'],
+               SETTINGS['fansmessageconfig']['mass_remain_count'],
+               SETTINGS['fansmessageconfig', 'next_mass_count'],
                shop_id
                ]
     row_count2 = cursor.execute(sql2, params2)
-    logger.info('audit shop: shop_id: %s, fd_t_shopaccount row count:%s, fd_t_fansmessageconfig row count:%s' % (
+    LOGGER_ROOT.info('audit shop: shop_id: %s, fd_t_shopaccount row count:%s, fd_t_fansmessageconfig row count:%s' % (
         shop_id, row_count, row_count2))
     cursor.close()
     conn.commit()
@@ -167,13 +164,13 @@ def audit_shop_pass(shop_id):
 
 
 def audit_shop_not_pass(shop_id):
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
     # set fd_t_shopaccount
     sql = 'update fd_t_shopaccount set service_status = %s where shop_id = %s'
     params = [src.define.SERVICE_STATUS.AUDIT_NOT_PASS, shop_id]
     row_count = cursor.execute(sql, params)
-    logger.info('audit shop not pass: shop_id: %s, fd_t_shopaccount row count:%s' % (shop_id, row_count, ))
+    LOGGER_ROOT.info('audit shop not pass: shop_id: %s, fd_t_shopaccount row count:%s' % (shop_id, row_count, ))
     cursor.close()
     conn.commit()
     conn.close()
@@ -188,6 +185,6 @@ def audit_shop_all():
 
 
 if __name__ == '__main__':
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
     print(list_audit_notpass_shops(cursor))

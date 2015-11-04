@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
 import src.dao.feedback
+import src.settings._mysql
 
-import src.pydev.config
-import src.pydev.logger
-import src.pydev.mysql
-
-
-conf = src.pydev.config.read_ini('core.ini')
-logger = src.pydev.logger.create('daoaccess')
+from src.settings import LOGGER_ROOT
 
 
 def get_user_feedbacks(offset, limit):
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
     try:
         feedback_infos = src.dao.feedback.get_user_feedbacks(cursor, offset, limit)
@@ -20,7 +15,7 @@ def get_user_feedbacks(offset, limit):
             'feedback_infos': feedback_infos
         }
     except Exception as e:
-        logger.exception(e)
+        LOGGER_ROOT.exception(e)
         return_info = {
             'is_success': False,
             'des': str(e)
@@ -31,7 +26,7 @@ def get_user_feedbacks(offset, limit):
 
 
 def get_platform_feedbacks(user_id):
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
 
     try:
@@ -41,7 +36,7 @@ def get_platform_feedbacks(user_id):
             'feedback_infos': feedback_infos
         }
     except Exception as e:
-        logger.exception(e)
+        LOGGER_ROOT.exception(e)
         return_info = {
             'is_success': False,
             'des': str(e)
@@ -52,12 +47,12 @@ def get_platform_feedbacks(user_id):
 
 
 def feedback_to_user(user_id, content):
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
     try:
         rows_count = src.dao.feedback.insert_platform_return_feedback(cursor, user_id, content)
     except Exception as e:
-        logger.exception(e)
+        LOGGER_ROOT.exception(e)
         return {
             'is_success': False,
             'des': str(e)
@@ -79,13 +74,13 @@ def feedback_to_user(user_id, content):
 
 
 def get_platform_and_user_feedbacks(user_id):
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
     try:
         response = src.dao.feedback.get_platform_and_user_feedbacks(cursor, user_id)
         num = len(response)
     except Exception as e:
-        logger.exception(e)
+        LOGGER_ROOT.exception(e)
         return {
             'is_success': False,
             'des': str(e)

@@ -1,13 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 
-import src.pydev.config
-import src.pydev.logger
-import src.pydev.mysql
-
-
-conf = src.pydev.config.read_ini('core.ini')
-logger = src.pydev.logger.create('dao')
+import src.settings._mysql
 
 
 def get_user_feedbacks(cursor, offset, limit):
@@ -80,7 +74,7 @@ def main(cursor):
 
 
 if __name__ == '__main__':
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
     main(cursor)
     cursor.close()

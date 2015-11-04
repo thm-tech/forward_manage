@@ -5,10 +5,8 @@ import urllib
 import random
 import json
 
-import src.pydev.config
+from src.settings import SETTINGS
 
-
-conf = src.pydev.config.read_ini('core.ini')
 
 host = "yunpian.com"
 port = 80
@@ -16,8 +14,8 @@ version = "v1"
 user_get_uri = "/" + version + "/user/get.json"
 sms_tpl_send_uri = "/" + version + "/sms/tpl_send.json"
 
-apikey = conf.get('yunpian', 'apikey')
-company = conf.get('yunpian', 'company')
+apikey = SETTINGS['yunpian']['apikey']
+company = SETTINGS['yunpian']['company']
 
 
 def combine_tpl_value(**kwargs):

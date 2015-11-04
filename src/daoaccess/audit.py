@@ -4,12 +4,10 @@ import src.dao.info
 import src.dao.audit
 import src.dao.mongo_geo
 import src.yunpian
-import src.pydev.mysql
-import src.pydev.config
-import src.pydev.logger
 
-conf = src.pydev.config.read_ini('core.ini')
-logger = src.pydev.logger.create('daoaccess')
+import src.settings._mysql
+
+from src.settings import LOGGER_ROOT
 
 
 def list_wait_audit_shops():
@@ -40,12 +38,13 @@ def audit_shop_all():
 
 
 def list_audit_notpass_shops():
-    conn = src.pydev.mysql.connection()
+    conn = src.settings._mysql.MYSQL_CONNECTION()
     cursor = conn.cursor()
     response = src.dao.audit.list_audit_notpass_shops(cursor)
     cursor.close()
     conn.close()
     return response
+
 
 if __name__ == '__main__':
     r = list_audit_notpass_shops()

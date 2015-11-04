@@ -4,14 +4,14 @@ from tornado.web import authenticated
 
 from src.utils.httpbase import HttpBaseHandler
 from src.utils.tornado_extra import route
-import src.pydev
+from src.settings import DIR
 
 
 @route(r'/')
 class IndexHandler(HttpBaseHandler):
     @authenticated
     def get(self, *args, **kwargs):
-        with open(src.pydev.pathjoin('resources', 'templates', 'html', 'index.html'), 'r') as f:
+        with open(DIR.joinpath('resources', 'templates', 'html', 'index.html').__str__(), 'r') as f:
             html = f.read()
         self.write(html)
 
@@ -20,7 +20,7 @@ class IndexHandler(HttpBaseHandler):
 class IndexHandler(HttpBaseHandler):
     @authenticated
     def get(self, *args, **kwargs):
-        with open(src.pydev.pathjoin('resources', 'templates', 'html', 'index.html'), 'r') as f:
+        with open(DIR.joinpath('resources', 'templates', 'html', 'index.html').__str__(), 'r') as f:
             html = f.read()
         self.write(html)
 
@@ -29,7 +29,7 @@ class IndexHandler(HttpBaseHandler):
 class AuditHandler(HttpBaseHandler):
     @authenticated
     def get(self, *args, **kwargs):
-        with open(src.pydev.pathjoin('resources', 'templates', 'html', 'index.html'), 'r') as f:
+        with open(DIR.joinpath('resources', 'templates', 'html', 'index.html').__str__(), 'r') as f:
             html = f.read()
         self.write(html)
 
@@ -38,7 +38,7 @@ class AuditHandler(HttpBaseHandler):
 class FeedbackHandler(HttpBaseHandler):
     @authenticated
     def get(self, *args, **kwargs):
-        with open(src.pydev.pathjoin('resources', 'templates', 'html', 'index.html'), 'r') as f:
+        with open(DIR.joinpath('resources', 'templates', 'html', 'index.html').__str__(), 'r') as f:
             html = f.read()
         self.write(html)
 
@@ -46,7 +46,7 @@ class FeedbackHandler(HttpBaseHandler):
 @route(r'/documents.html')
 class DocumentsHandler(HttpBaseHandler):
     def get(self, *args, **kwargs):
-        with open(src.pydev.pathjoin('resources', 'templates', 'html', 'index.html'), 'r') as f:
+        with open(DIR.joinpath('resources', 'templates', 'html', 'index.html').__str__(), 'r') as f:
             html = f.read()
         self.write(html)
 
@@ -54,7 +54,7 @@ class DocumentsHandler(HttpBaseHandler):
 @route(r'/login.html')
 class LoginHandler(HttpBaseHandler):
     def get(self, *args, **kwargs):
-        with open(src.pydev.pathjoin('resources', 'templates', 'html', 'index.html'), 'r') as f:
+        with open(DIR.joinpath('resources', 'templates', 'html', 'index.html').__str__(), 'r') as f:
             html = f.read()
         self.write(html)
 
@@ -62,6 +62,6 @@ class LoginHandler(HttpBaseHandler):
 @route('/documents/(.*)')
 class DocumentsContentHandler(HttpBaseHandler):
     def get(self, filename):
-        with open(src.pydev.pathjoin('resources', 'documents', filename)) as f:
+        with DIR.joinpath('resources', 'documents', filename).open() as f:
             text = f.read()
         self.write(text)
