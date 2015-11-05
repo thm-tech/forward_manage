@@ -3,7 +3,7 @@
     "development",
     "release"
   ],
-  "type": "development",
+  "type": "release",
   "development": {
     "mysql": {
       "host": "115.28.143.67",
@@ -34,7 +34,7 @@
   },
   "release": {
     "mysql": {
-      "host": "112.124.115.140",
+      "host": "localhost",
       "port": 3306,
       "user": "fd",
       "password": "bEijingyinpu_2015",
