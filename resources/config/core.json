@@ -3,7 +3,7 @@
     "development",
     "release"
   ],
-  "type": "release",
+  "type": "development",
   "development": {
     "mysql": {
       "host": "115.28.143.67",
