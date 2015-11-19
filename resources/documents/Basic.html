@@ -1,0 +1,61 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">h1,h2,h3,h4,h5,h6,p,blockquote {    margin: 0;    padding: 0;}body {    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;    font-size: 13px;    line-height: 18px;    color: #737373;    margin: 10px 13px 10px 13px;}a {    color: #0069d6;}a:hover {    color: #0050a3;    text-decoration: none;}a img {    border: none;}p {    margin-bottom: 9px;}h1,h2,h3,h4,h5,h6 {    color: #404040;    line-height: 36px;}h1 {    margin-bottom: 18px;    font-size: 30px;}h2 {    font-size: 24px;}h3 {    font-size: 18px;}h4 {    font-size: 16px;}h5 {    font-size: 14px;}h6 {    font-size: 13px;}hr {    margin: 0 0 19px;    border: 0;    border-bottom: 1px solid #ccc;}blockquote {    padding: 13px 13px 21px 15px;    margin-bottom: 18px;    font-family:georgia,serif;    font-style: italic;}blockquote:before {    content:"C";    font-size:40px;    margin-left:-10px;    font-family:georgia,serif;    color:#eee;}blockquote p {    font-size: 14px;    font-weight: 300;    line-height: 18px;    margin-bottom: 0;    font-style: italic;}code, pre {    font-family: Monaco, Andale Mono, Courier New, monospace;}code {    background-color: #fee9cc;    color: rgba(0, 0, 0, 0.75);    padding: 1px 3px;    font-size: 12px;    -webkit-border-radius: 3px;    -moz-border-radius: 3px;    border-radius: 3px;}pre {    display: block;    padding: 14px;    margin: 0 0 18px;    line-height: 16px;    font-size: 11px;    border: 1px solid #d9d9d9;    white-space: pre-wrap;    word-wrap: break-word;}pre code {    background-color: #fff;    color:#737373;    font-size: 11px;    padding: 0;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body><h1>Basic</h1>
+<h2>1. /basic/companyinfo</h2>
+<p>des: 公司基础信息
+</p>
+<h3>get:</h3>
+<ul>
+<li>response: {"introduction": "introduction", "disclaimer": "disclaimer", "phone_no_list": ["0551-65324568", "0551-45678912"], "email": "miaomiao@impower-tech.com", "name": "\u5317\u4eac\u94f6\u7011\u6280\u672f\u6709\u9650\u516c\u53f8"}</li>
+</ul>
+<h2>2. /basic/goodscategories</h2>
+<p>des: 获取商品类型列表
+</p>
+<h3>get:</h3>
+<ul>
+<li>params: ?parent_id=</li>
+<li>response: {"goodscategories": [{"goodscategory_name": "\u7537\u8863\u670d", "goodscategory_id": 2}], "total_num": 1}</li>
+<li>如果 parent_id 为空, 则返回一级商品类型; 否则返回其直接子类型</li>
+</ul>
+<h2>3. /basic/countries</h2>
+<p>des: 国家
+</p>
+<h3>get:</h3>
+<p>response: {"total_num": 3, "countries": [{"country_name": "\u4e2d\u56fd", "country_id": 1}, {"country_name": "\u7f8e\u7239", "country_id": 2}, {"country_name": "\u5927\u6e05", "country_id": 1}]}
+
+</p>
+<h2>4. /basic/provinces</h2>
+<p>des: 省份
+</p>
+<h3>get:</h3>
+<p>params: ?country_id=
+
+</p>
+<p>response: {"provinces": [{"province_id": 1, "province_name": "\u6d59\u6c5f"}, {"province_id": 2, "province_name": "\u4e0a\u6d77\u5e02"}], "total_num": 2}
+
+</p>
+<h2>5. /basic/cities</h2>
+<p>des: 城市
+</p>
+<h3>get:</h3>
+<p>params: ?country_id=province_id=
+
+</p>
+<p>response: {"cities": [{"city_name": "\u676d\u5dde", "city_id": 2}], "total_num": 1}
+
+
+</p>
+<h2>6. /basic/districts</h2>
+<p>des: 区县
+</p>
+<h3>get:</h3>
+<p>params: ?country_id=province_id=city_id=
+
+</p>
+<p>response: {"districts": [{"district_name": "\u6d66\u4e1c\u533a", "district_id": 1}], "total_num": 1}
+
+</p>
+<p>Edit By <a href="http://mahua.jser.me">MaHua</a></p>
+</body></html>

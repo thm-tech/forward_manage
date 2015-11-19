@@ -1,0 +1,131 @@
+@import "color.less";
+
+.transition(@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+.opacity(@opacity) {
+    @opacity-10: @opacity * 10;
+    opacity: @opacity;
+    filter: ~"alpha(opacity=@{opacity-10})";
+}
+
+.transform(@args) {
+    -moz-transform: @args;
+    -ms-transform: @args;
+    -o-transform: @args;
+    -webkit-transform: @args;
+    transform: @args;
+}
+
+body {
+    color: #333333;
+    background-color: #ffffff;
+    font-size: 18px;
+    position: relative;
+}
+
+a {
+    color: @color-main;
+    outline: none !important;
+}
+
+// 导航条
+.navbar-magnolia {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: #fff;
+    text-align: center;
+    ul {
+        padding-left: 0;
+        li {
+            display: inline-block;
+            padding: 24px 10px;
+            .transition(all 0.5s);
+            a {
+                color: #757575;
+                text-transform: uppercase;
+                .transition(all 0.5s);
+            }
+            &:hover {
+                a {
+                    font-size: 1.3em;
+                    color: #ffffff;
+                }
+                background-color: @color-main;
+            }
+        }
+    }
+    li.active {
+        a {
+            font-size: 1.3em;
+            color: #ffffff;
+        }
+        background-color: @color-main;
+    }
+    .logout {
+        width: 80px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: #757575;
+        font-size: 1.5em;
+        .transition(all 0.5s);
+        &:hover {
+            right: 10px;
+        }
+    }
+}
+
+// 登陆页面
+.login-form {
+    font-size: 14px;
+    margin: 5% auto auto auto;
+    padding: 20px 40px 40px 40px;
+    width: 30%;
+    border: 1px solid #DDDDDD;
+    color: #757575;
+    .control-label {
+        font-size: 14px;
+    }
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857;
+        color: #555;
+        background-color: #FFF;
+        background-image: none;
+        border: 1px solid #CCC;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+        transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    }
+}
+
+// 审核页面-导航条
+.nav-tabs {
+    li {
+        a {
+            color: #d14563;
+            background-color: #ffffff;
+            border-bottom: 1px solid #d14563;
+        }
+        &.active {
+            a {
+                border-top: 1px solid #d14563;
+                border-left: 1px solid #d14563;
+                border-right: 1px solid #d14563;
+                border-bottom: 0;
+                color: #FFFFFF;
+                background-color: #d14563;
+            }
+        }
+    }
+}

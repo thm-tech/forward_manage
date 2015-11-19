@@ -1,0 +1,102 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">h1,h2,h3,h4,h5,h6,p,blockquote {    margin: 0;    padding: 0;}body {    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;    font-size: 13px;    line-height: 18px;    color: #737373;    margin: 10px 13px 10px 13px;}a {    color: #0069d6;}a:hover {    color: #0050a3;    text-decoration: none;}a img {    border: none;}p {    margin-bottom: 9px;}h1,h2,h3,h4,h5,h6 {    color: #404040;    line-height: 36px;}h1 {    margin-bottom: 18px;    font-size: 30px;}h2 {    font-size: 24px;}h3 {    font-size: 18px;}h4 {    font-size: 16px;}h5 {    font-size: 14px;}h6 {    font-size: 13px;}hr {    margin: 0 0 19px;    border: 0;    border-bottom: 1px solid #ccc;}blockquote {    padding: 13px 13px 21px 15px;    margin-bottom: 18px;    font-family:georgia,serif;    font-style: italic;}blockquote:before {    content:"C";    font-size:40px;    margin-left:-10px;    font-family:georgia,serif;    color:#eee;}blockquote p {    font-size: 14px;    font-weight: 300;    line-height: 18px;    margin-bottom: 0;    font-style: italic;}code, pre {    font-family: Monaco, Andale Mono, Courier New, monospace;}code {    background-color: #fee9cc;    color: rgba(0, 0, 0, 0.75);    padding: 1px 3px;    font-size: 12px;    -webkit-border-radius: 3px;    -moz-border-radius: 3px;    border-radius: 3px;}pre {    display: block;    padding: 14px;    margin: 0 0 18px;    line-height: 16px;    font-size: 11px;    border: 1px solid #d9d9d9;    white-space: pre-wrap;    word-wrap: break-word;}pre code {    background-color: #fff;    color:#737373;    font-size: 11px;    padding: 0;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body><h1>Shop</h1>
+<h2>1. /shop</h2>
+<p>des: 商店集合, 用于新增商店和取得商店列表(首页分页用)
+</p>
+<h3>get:</h3>
+<ul>
+<li><p>params: ?offset=limit=</p>
+</li>
+<li><p>response: {"shops": [{"business_hours": null, "category_list": "/sdfsdf/asdfasdf/1.txt,sdfsdfsdfsdf", "telephone_no": null, "latitude": null, "city_id": null, "district_id": null, "shop_name": "\u59b9\u5b50\u4f60\u8fd9\u662f\u574f\u6389\u4e86\u4e48", "longititude": null, "shop_id": 1, "pic_url_list": "/sdfsdf/asdfasdf/1.txt,sdfsdfsdfsdf", "address": null, "qrcode": null, "business_area": null}, {"business_hours": null, "category_list": null, "telephone_no": null, "latitude": null, "city_id": null, "district_id": null, "shop_name": "\u5305\u5934\u5b50", "longititude": null, "shop_id": 2, "pic_url_list": null, "address": null, "qrcode": null, "business_area": null}], "total_num": 3}</p>
+</li>
+<li><p>offset: 起始商店位置, limit: 打算获得多少个商店. 返回值说明: total_num 代表系统中总的商店数量而非此次取得的商店数量, 用作分页用.</p>
+</li>
+</ul>
+<h3>post:</h3>
+<ul>
+<li>body:<pre><code>  shop_id, 必填
+  shop_name, 必填
+  brand_name
+  business_hours
+  telephone_no
+  city_id
+  district_id
+  business_area
+  address
+  longititude
+  latitude
+  category_list</code></pre>
+</li>
+<li>response: {"is_success": true, "shop_id": 10027}</li>
+</ul>
+<h2>2. /shop/[$shop_id]</h2>
+<p>des: 商店对象
+</p>
+<h3>get:</h3>
+<ul>
+<li>params: $shop_id</li>
+<li>response: {"business_area": null, "business_hours": null, "category_list": "1", "telephone_no": null, "latitude": null, "city_id": null, "brand_name": "\u5c0f\u82b3", "district_id": null, "longititude": null, "shop_id": 1, "pic_url_list": "/sdfsdf/asdfasdf/1.txt,sdfsdfsdfsdf", "address": null, "qrcode": null, "shop_name": "\u59b9\u5b50\u4f60\u8fd9\u662f\u574f\u6389\u4e86\u4e48"}</li>
+</ul>
+<h3>put:</h3>
+<ul>
+<li>params: $shop_id</li>
+<li>body:<pre><code>  shop_name
+  brand_name 
+  business_hours
+  telephone_no
+  city_id
+  district_id
+  business_area
+  address
+  longititude
+  latitude
+  category_list</code></pre>
+</li>
+<li>response: {"is_success": true, "shop_id": 1}</li>
+</ul>
+<h2>3. /shop/[$shop_id]/introduction</h2>
+<p>des: 商店图文介绍对象, 用于获取和修改商店图文信息
+</p>
+<h2>get:</h2>
+<ul>
+<li>params: $shop_id</li>
+<li>response: {"introduction": "24333", "shop_id": 1}</li>
+</ul>
+<h2>put:</h2>
+<ul>
+<li>params: $shop_id</li>
+<li>body: introduction = 'balabalabalbalalabalbalbalablablabalbal'</li>
+<li>response: {"is_success": true, "shop_id": 1}</li>
+</ul>
+<h2>post:</h2>
+<ul>
+<li>同 put, 用的是一套代码, post代表新增, put代表修改, 提供两个http动词来符合 restful 设计</li>
+</ul>
+<h2>4. /shop/[$shop_id]/image</h2>
+<p>des: 表示指定商店对象所包含的图片对象的集合
+</p>
+<h3>get</h3>
+<ul>
+<li>params: $shop_id</li>
+<li>response: {"imgs": ["/fd/images/1.jpg", "/fd/images/2.jpg",], "total_num": 2}</li>
+<li>返回该商品所有的图片 url</li>
+<li>如果传shop_id = 0, 那么可以打开一个图片上传测试网页, 仅供开发测试使用, 上线将注释掉该功能</li>
+</ul>
+<h3>post</h3>
+<ul>
+<li>response: {"result": [{"is_success": true, "img_url": "/fdimage/goodsimage/10.jpg", "filename": "test.png"}], "total_num": 1}</li>
+<li>该接口仅上传图片, 并未将图片url写入商店图片url列表, 上传完图片后请使用 put 动作更新商店的图片列表</li>
+<li>请使用上述 get 方法, 传 goods_id=0 进行测试</li>
+</ul>
+<h3>put</h3>
+<ul>
+<li>params: $shop_id, ?pic_url_list=</li>
+<li>response: {"is_success": true, "shop_id": 1}</li>
+<li>pic_url_list 为必填参数, 传入逗号分隔的 uri 列表.比如 "/fd/image/1.jpg, /fd/image/2.jpg"</li>
+<li>更新商品的图片uri列表字段</li>
+</ul>
+<p>Edit By <a href="http://mahua.jser.me">MaHua</a></p>
+</body></html>

@@ -1,0 +1,61 @@
+<div class="container-fluid" ng-controller="feedback">
+
+    <div class="row">
+        <div class="col-md-9">
+            <table class="table" style="font-size: 15px;">
+                <thead>
+                <tr style="background-color: #ffffff">
+                    <th style="width: 10%">user_id</th>
+                    <th style="width: 10%">name</th>
+                    <th style="width: 50%">content</th>
+                    <th style="width: 15%">time</th>
+                    <th style="width: 15%">operation</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="f in feedbacks">
+                    <td>{{ f.user_id }}</td>
+                    <td>{{ f.name }}</td>
+                    <td>{{ f.content }}</td>
+                    <td>{{ f.time }}</td>
+                    <td class="row">
+                        <a href="javascript: void(0)" class="col-md-6"
+                           ng-click="insertDetail(f.user_id, f.content)"
+                           style="color: #B15315;text-decoration:none">details</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="javascript: void(0)" ng-if="!noMorefeedbacks" ng-click="getMoreFeedbackInofs()">更多</a>
+            <span class="color-main" ng-if="noMorefeedbacks">没有更多了</span>
+        </div>
+        <div class="col-md-3" style="position: fixed;height: 100vh;right: 0" ng-if="detail.user_id">
+            <h3>Details</h3>
+            <h4>回复:
+                <small style="color: #AAAAAA">{{ detail.content }}</small>
+            </h4>
+            <textarea style="width: 100%" ng-model="detail.platformFeedbackInfo"></textarea>
+
+            <div class="row">
+                <a href="javascript: void(0)" class="button pull-right" style="margin-right: 15px; font-size: 25px; font-weight: 700"
+                   ng-click="sendFeedbackToUser(detail.user_id, detail.platformFeedbackInfo)">send</a>
+            </div>
+            <div style="padding-top: 5px;padding-bottom: 5px">历史记录</div>
+            <ol style="padding-left: 0px">
+                <li ng-repeat="i in detail.history" class="list-unstyled">
+                    <div ng-if="i.direction==1" class="row text-left color-sea"
+                         style="font-size: 13px;margin-left: 5px;margin-right: 5px">
+                        用户说
+                    </div>
+                    <div ng-if="i.direction==2" class="row text-right color-grass"
+                         style="font-size: 13px;margin-left: 5px;margin-right: 5px">
+                        管理员说
+                    </div>
+                    <div class="row" style="font-size: 13px;margin-left: 5px;margin-right: 5px"
+                         ng-class="{'text-right': i.direction==2, 'text:w-left': i.direction==1}">{{ i.content }}
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>

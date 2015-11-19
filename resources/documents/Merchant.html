@@ -1,0 +1,91 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">h1,h2,h3,h4,h5,h6,p,blockquote {    margin: 0;    padding: 0;}body {    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;    font-size: 13px;    line-height: 18px;    color: #737373;    margin: 10px 13px 10px 13px;}a {    color: #0069d6;}a:hover {    color: #0050a3;    text-decoration: none;}a img {    border: none;}p {    margin-bottom: 9px;}h1,h2,h3,h4,h5,h6 {    color: #404040;    line-height: 36px;}h1 {    margin-bottom: 18px;    font-size: 30px;}h2 {    font-size: 24px;}h3 {    font-size: 18px;}h4 {    font-size: 16px;}h5 {    font-size: 14px;}h6 {    font-size: 13px;}hr {    margin: 0 0 19px;    border: 0;    border-bottom: 1px solid #ccc;}blockquote {    padding: 13px 13px 21px 15px;    margin-bottom: 18px;    font-family:georgia,serif;    font-style: italic;}blockquote:before {    content:"C";    font-size:40px;    margin-left:-10px;    font-family:georgia,serif;    color:#eee;}blockquote p {    font-size: 14px;    font-weight: 300;    line-height: 18px;    margin-bottom: 0;    font-style: italic;}code, pre {    font-family: Monaco, Andale Mono, Courier New, monospace;}code {    background-color: #fee9cc;    color: rgba(0, 0, 0, 0.75);    padding: 1px 3px;    font-size: 12px;    -webkit-border-radius: 3px;    -moz-border-radius: 3px;    border-radius: 3px;}pre {    display: block;    padding: 14px;    margin: 0 0 18px;    line-height: 16px;    font-size: 11px;    border: 1px solid #d9d9d9;    white-space: pre-wrap;    word-wrap: break-word;}pre code {    background-color: #fff;    color:#737373;    font-size: 11px;    padding: 0;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body><h1>Merchant</h1>
+<h2>1. /merchant/[$shop_id]/info</h2>
+<p>des: 商店账号信息类
+</p>
+<h3>get:</h3>
+<p>params: $shop_id
+
+</p>
+<p>response: {"contact_phone_no": null, "contact_name": "newbrash\u5927\u738b", "shop_id": 1, "contact_email": null, "contact_qq": null}
+
+</p>
+<h3>put:</h3>
+<ul>
+<li>params: $shop_id</li>
+<li>body:<pre><code>  contact_name 
+  contact_phone_no
+  contact_email
+  contact_qq</code></pre>
+</li>
+<li>response: {"is_success": true, "shop_id": 1}</li>
+<li>修改商店账号的基本信息, body 参数均可为空</li>
+</ul>
+<h2>2. /merchant/[$shop_id]/serviceinfo</h2>
+<p>des: 商店账号服务信息类
+</p>
+<h3>get:</h3>
+<p>params: $shop_id
+
+</p>
+<p>response: {"service_deadline": null, "shop_id": "1", "last_pay_time": null, "service_balance": null, "last_pay_money": null, "service_status": null}
+
+
+</p>
+<h2>3. /merchant/isexist</h2>
+<p>des: 判断商店账号是否存在
+</p>
+<h3>get:</h3>
+<p>params: ?account
+
+</p>
+<p>response: {"is_exist": false}
+
+</p>
+<h2>4. /merchant</h2>
+<p>des: 商店账号集合, 用于商店账号注册
+</p>
+<h3>post</h3>
+<ul>
+<li>body:<pre><code>  account, 必填
+  password, 必填, 仅接受16位或32位md5加密后字符串
+  contact_name
+  contact_phone_no
+  contact_email
+  contact_qq
+  shop_name, 必填
+  brand_name
+  business_hours
+  telephone_no
+  city_id
+  district_id
+  business_area
+  address
+  longititude
+  latitude
+  category_list</code></pre>
+</li>
+<li>response: {"is_success": true, "shop_id": 1}</li>
+</ul>
+<h2>5 /merchant/[$shop_id]/password</h2>
+<p>des: 商店账号密码对象
+</p>
+<h3>put:</h3>
+<ul>
+<li>params: $shop_id</li>
+<li>body: old_password, new_password</li>
+<li>修改密码用</li>
+</ul>
+<h2>6 /merchant/logout</h2>
+<p>des: 账号登出
+</p>
+<h3>get:</h3>
+<ul>
+<li>无</li>
+<li>账号登出后需要自动跳转到首页, 所以需要前段给予首页 uri, 目前是跳转到 404 页面
+Edit By <a href="http://mahua.jser.me">MaHua</a></li>
+</ul>
+</body></html>

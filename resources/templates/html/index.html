@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="app">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="robots" content="all,index,follow"/>
+    <title>Forward Manage</title>
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="/static/plugins/bootstrap-superhero.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--LESS-->
+    <link rel="stylesheet/less" type="text/css" href="/static/less/main.less"/>
+    <script src="/static/plugins/less.min.js"></script>
+</head>
+<body ng-controller="index">
+<!-- navbar -->
+<nav class="navbar-magnolia row" style="z-index: 3">
+    <img src="/static/img/logo.png" style="position: absolute;left:30px;top:20px"/>
+    <ul>
+        <li ng-class="{active: navbar.index == 1}"><a href="/index.html" ng-click="clickNav(1)">Home</a></li>
+        <li ng-class="{active: navbar.index == 2}"><a href="/audit.html" ng-click="clickNav(2)">Audit</a></li>
+        <li ng-class="{active: navbar.index == 3}"><a href="/feedback.html" ng-click="clickNav(3)">Feedback</a></li>
+        <li ng-class="{active: navbar.index == 4}"><a href="/documents.html" ng-click="clickNav(4)">Documents</a>
+        </li>
+    </ul>
+    <a href="javascript: void(0)" class="logout" ng-click="logout()">
+        <i class="fa fa-sign-out"></i>
+    </a>
+</nav>
+<!-- navbar end -->
+<div style="position: relative; top: 85px;">
+    <div ng-view></div>
+</div>
+
+<script src="/static/plugins/jquery.min.js"></script>
+<script src="/static/plugins/angular.min.js"></script>
+<script src="/static/plugins/angular-route.min.js"></script>
+<script src="//cdn.bootcss.com/angular-cookie/4.0.0/angular-cookie.min.js"></script>
+<script src="/static/plugins/bootstrap.min.js"></script>
+<!--PROJECT-->
+<script src="/static/js/config.js"></script>
+<!--CONTROLLER-->
+<script src="/static/js/index.controller.js"></script>
+<script src="/static/js/audit.controller.js"></script>
+<script src="/static/js/documents.controller.js"></script>
+<script src="/static/js/feedback.controller.js"></script>
+<script src="/static/js/login.controller.js"></script>
+</body>
+</html>
