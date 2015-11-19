@@ -1,0 +1,63 @@
+{
+  "type_list": [
+    "development",
+    "release"
+  ],
+  "type": "development",
+  "development": {
+    "mysql": {
+      "host": "115.28.143.67",
+      "port": 3306,
+      "user": "fd",
+      "password": "111111",
+      "database": "fddb"
+    },
+    "mongo": {
+      "host": "115.28.143.67",
+      "port": 27017
+    },
+    "yunpian": {
+      "apikey": "cf6905108b06464f106017c3efe12e52",
+      "company": "喵喵熊"
+    },
+    "fansmessageconfig": {
+      "current_p2p_count": 30,
+      "p2p_remain_count": 30,
+      "next_p2p_count": 30,
+      "current_mass_count": 10,
+      "mass_remain_count": 10,
+      "next_mass_count": 10
+    },
+    "oss": {
+      "prefix": "http://img.immbear.com/"
+    }
+  },
+  "release": {
+    "mysql": {
+      "host": "localhost",
+      "port": 3306,
+      "user": "fd",
+      "password": "bEijingyinpu_2015",
+      "database": "fddb"
+    },
+    "mongo": {
+      "host": "mongodb://shopaddress:shopaddress123@112.124.115.140:27017/shop_address",
+      "port": 27017
+    },
+    "yunpian": {
+      "apikey": "cf6905108b06464f106017c3efe12e52",
+      "company": "喵喵熊"
+    },
+    "fansmessageconfig": {
+      "current_p2p_count": 30,
+      "p2p_remain_count": 30,
+      "next_p2p_count": 30,
+      "current_mass_count": 10,
+      "mass_remain_count": 10,
+      "next_mass_count": 10
+    },
+    "oss": {
+      "prefix": "http://img.immbear.com/"
+    }
+  }
+}

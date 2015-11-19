@@ -1,0 +1,160 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">h1,h2,h3,h4,h5,h6,p,blockquote {    margin: 0;    padding: 0;}body {    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;    font-size: 13px;    line-height: 18px;    color: #737373;    margin: 10px 13px 10px 13px;}a {    color: #0069d6;}a:hover {    color: #0050a3;    text-decoration: none;}a img {    border: none;}p {    margin-bottom: 9px;}h1,h2,h3,h4,h5,h6 {    color: #404040;    line-height: 36px;}h1 {    margin-bottom: 18px;    font-size: 30px;}h2 {    font-size: 24px;}h3 {    font-size: 18px;}h4 {    font-size: 16px;}h5 {    font-size: 14px;}h6 {    font-size: 13px;}hr {    margin: 0 0 19px;    border: 0;    border-bottom: 1px solid #ccc;}blockquote {    padding: 13px 13px 21px 15px;    margin-bottom: 18px;    font-family:georgia,serif;    font-style: italic;}blockquote:before {    content:"C";    font-size:40px;    margin-left:-10px;    font-family:georgia,serif;    color:#eee;}blockquote p {    font-size: 14px;    font-weight: 300;    line-height: 18px;    margin-bottom: 0;    font-style: italic;}code, pre {    font-family: Monaco, Andale Mono, Courier New, monospace;}code {    background-color: #fee9cc;    color: rgba(0, 0, 0, 0.75);    padding: 1px 3px;    font-size: 12px;    -webkit-border-radius: 3px;    -moz-border-radius: 3px;    border-radius: 3px;}pre {    display: block;    padding: 14px;    margin: 0 0 18px;    line-height: 16px;    font-size: 11px;    border: 1px solid #d9d9d9;    white-space: pre-wrap;    word-wrap: break-word;}pre code {    background-color: #fff;    color:#737373;    font-size: 11px;    padding: 0;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body><h1>Goods</h1>
+<p>restful 风格, 一个 uri 代表一个对象(或对象集合), post, delete, put, get方法分别对应数据库增删改查操作.
+
+
+
+</p>
+<h2>1. /basic/goodscategories</h2>
+<p>des: 商品类别集合
+</p>
+<h3>get:</h3>
+<ul>
+<li>params: ?parent_id=</li>
+<li>response: {"goodscategories": [{"goodscategory_name": "\u7537\u8863\u670d", "goodscategory_id": 2}], "total_num": 1}</li>
+<li>如果 parent_id 为空, 则返回一级类别; 否则, 返回改该 parent_id 的直接子级分类</li>
+</ul>
+<h2>2. /goods/category/[$category_id]</h2>
+<p>des: 商品类别对象
+</p>
+<h3>get:</h3>
+<ul>
+<li>params: $category_id</li>
+<li>response: {"parent_name": "\u8863\u670d", "ancestors_list": "1", "name": "\u7537\u8863\u670d", "parent_id": 1}</li>
+</ul>
+<h2>3. /goods</h2>
+<p>des: 商品集合
+</p>
+<h3>get</h3>
+<ul>
+<li>params: ?shop_id=offset=limit='</li>
+<li>response: {"goods": [{"publish_time": "2015-04-20 17-24-04", "description": "description", "goods_name": "goods_name", "shop_ip": 1, "bar_code": null, "price": "1.00", "goods_id": 1, "brand_name": "1111", "basic_info": "Hello", "category_list": [], "pic_url_list": ["1", "2", "3", "4", "5"], "promotion_price": "None"}], "total_num": 11}</li>
+<li>该接口获取指定商店的指定数量的商品.参数说明: offset: 起始商品编号; limit: 获取商品数量. 返回值说明: total_num: 该商店所拥有的全部商品的数量, 而非本次获取到的商品数量</li>
+</ul>
+<h3>post</h3>
+<ul>
+<li>body: <pre><code>  shop_id(必填)
+  goods_name
+  category_id
+  description
+  price
+  promotion_price
+  brand_name
+  basic_info(JSON 串)</code></pre>
+</li>
+<li>response: {"is_success": true, "goods_id": 16}</li>
+<li>用于新增一个商品</li>
+</ul>
+<h2>4. /goods/[$goods_id]</h2>
+<p>des: 商品对象
+</p>
+<h3>get</h3>
+<ul>
+<li>params: $goods_id</li>
+<li>response: {"publish_time": "2015-04-20 17-24-04", "description": "description", "category_list": [], "bar_code": null, "price": "1.00", "goods_id": 1, "brand_name": "1111", "basic_info": "Hello", "shop_id": 1, "pic_url_list": ["1", "2", "3", "4", "5"], "promotion_price": "None"}</li>
+</ul>
+<h3>put</h3>
+<ul>
+<li>params: $goods_id</li>
+<li>body: <pre><code>  goods_name 
+  category 
+  description
+  bar_code 
+  price 
+  promotion_price
+  pic_url_list
+  brand_name
+  basic_info </code></pre>
+</li>
+<li>response: {"is_success": true, "goods_id": 1}</li>
+<li>用于修改一个已经存在的商品, body中参数均为选填</li>
+</ul>
+<h3>delete</h3>
+<ul>
+<li>params: $goods_id</li>
+<li>response: {"is_success": true, "goods_id": 16}</li>
+<li>删除一个商品</li>
+</ul>
+<h2>5. /goods/[$goods_id]/image</h2>
+<p>des: 表示指定商品对象所包含的图片对象的集合
+</p>
+<h3>get</h3>
+<ul>
+<li>params: $goods_id</li>
+<li>response: {"imgs": ["/fd/images/1.jpg", "/fd/images/2.jpg",], "total_num": 2}</li>
+<li>返回该商品所有的图片 url</li>
+<li>如果传goods_id = 0, 那么可以打开一个图片上传测试网页, 仅供开发测试使用, 上线将注释掉该功能</li>
+</ul>
+<h3>post</h3>
+<ul>
+<li>response: {"result": [{"is_success": true, "img_url": "/fdimage/goodsimage/10.jpg", "filename": "test.png"}], "total_num": 1}</li>
+<li>该接口仅上传图片, 并未将图片url写入商品图片url列表, 上传完图片后请使用 put 动作更新商品的图片列表</li>
+<li>请使用上述 get 方法, 传 goods_id=0 进行测试</li>
+</ul>
+<h3>put</h3>
+<ul>
+<li>params: $goods_id, ?pic_url_list=</li>
+<li>response: {"is_success": true, "goods_id": 1}</li>
+<li>pic_url_list 为必填参数, 传入逗号分隔的 uri 列表.比如 "/fd/image/1.jpg, /fd/image/2.jpg"</li>
+<li>更新商品的图片uri列表字段</li>
+</ul>
+<h2>6. /goods/[$goods_id]/favorite</h2>
+<p>des: 关注该商品的用户集合
+</p>
+<h3>get</h3>
+<ul>
+<li>params: $goods_id</li>
+<li>response: {"users": [1, 2], "total_num": 2}</li>
+</ul>
+<h2>6. /goods/[$goods_id]/fans</h2>
+<p>des: 关注该商品, 且同时是该商店粉丝的用户集合
+</p>
+<h3>get</h3>
+<ul>
+<li>params: $goods_id</li>
+<li>response: {"users": [1, 2], "total_num": 2}</li>
+</ul>
+<h2>7. /goods/[$goods_id]/standard</h2>
+<p>des: 指定商品其包含的规格的集合
+</p>
+<h3>get</h3>
+<ul>
+<li>params: $goods_id</li>
+<li>response: {"goods_standards": [{"stand_key": "size", "goods_id": 1, "price": "1.00", "stand_value": "small", "promotion_price": "2.00", "id": 1}, {"stand_key": "size", "goods_id": 1, "price": "1.00", "stand_value": "big", "promotion_price": "0.50", "id": 3}], "total_num": 2}</li>
+<li>获得该商品所具有的所有规格和其价钱</li>
+</ul>
+<h3>post</h3>
+<ul>
+<li>params: $goods_id</li>
+<li>body: <pre><code>  stand_key, 规格键, 比如 size
+  stand_value, 规格值, 比如 16px
+  price, 价格
+  promotion_price, 打折价</code></pre>
+</li>
+<li>response: {"standard_id": 4, "is_success": true}</li>
+</ul>
+<h2>8. /goods/[$goods_id]/standard/[$standard_id]</h2>
+<p>des: 表示一个具体规格对象
+</p>
+<h3>put</h3>
+<ul>
+<li>params: $goods_id, $standard_id</li>
+<li>body: <pre><code>  stand_key, 规格键, 比如 size
+  stand_value, 规格值, 比如 16px
+  price, 价格
+  promotion_price, 打折价</code></pre>
+</li>
+<li>response: {"standard_id": 4, "is_success": true}</li>
+<li>修改一个已经存在的规格的相关属性, 虽然参数要求传入 goods_id 和 standard_id, 但后台仅以 standard_id 为准, goods_id 留作未来扩展用</li>
+</ul>
+<h3>delete</h3>
+<ul>
+<li>params: $goods_id, $standard_id</li>
+<li>response: {"standard_id": 4, "is_success": true}</li>
+<li>删除该规格
+Edit By <a href="http://mahua.jser.me">MaHua</a></li>
+</ul>
+</body></html>
