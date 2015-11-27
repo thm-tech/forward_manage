@@ -151,7 +151,7 @@ def audit_shop_pass(shop_id):
                SETTINGS['fansmessageconfig']['next_p2p_count'],
                SETTINGS['fansmessageconfig']['current_mass_count'],
                SETTINGS['fansmessageconfig']['mass_remain_count'],
-               SETTINGS['fansmessageconfig', 'next_mass_count'],
+               SETTINGS['fansmessageconfig']['next_mass_count'],
                shop_id
                ]
     row_count2 = cursor.execute(sql2, params2)
